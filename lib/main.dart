@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 void main(){
-  runApp(MainApp());
+  runApp (const MainApp());
 }
 class MainApp extends StatelessWidget{
   const MainApp({super.key});
@@ -15,7 +15,7 @@ class MainApp extends StatelessWidget{
 }
 class Quiz extends StatefulWidget{
   const Quiz({super.key});
-
+  @override
   State createState()=>_QuizApp();
 }
 class _QuizApp extends State{
@@ -57,17 +57,17 @@ MaterialStateProperty<Color?> checkAnswer(int buttonIndex){
     if(buttonIndex==allQuestions[questionIndex]["AnswerIndex"]){
       return const MaterialStatePropertyAll(Colors.green);
     }else if(buttonIndex== selectedAnswerIndex){
-      return MaterialStatePropertyAll(Colors.red);
+      return const MaterialStatePropertyAll(Colors.red);
     }else{
-      return MaterialStatePropertyAll(null);
+      return const MaterialStatePropertyAll(null);
     }
   }
   else{
-    return MaterialStatePropertyAll(null);
+    return const MaterialStatePropertyAll(null);
   }
 }
 
-void ValidateCurrentPage(){
+void validateCurrentPage(){
   if(selectedAnswerIndex==-1){
     return;
   }
@@ -118,7 +118,7 @@ Scaffold isQuestionScreen(){
               ),
               ),
               Text("${questionIndex+1}/${allQuestions.length}",
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 25,
                 ),
@@ -136,7 +136,7 @@ Scaffold isQuestionScreen(){
                 height: 50,
                 child: Text(
                   allQuestions[questionIndex]["Question"],
-                  style: TextStyle(
+                  style: const  TextStyle(
                     fontWeight: FontWeight.w400,
                     fontSize: 25,
                   ),
@@ -230,7 +230,7 @@ Scaffold isQuestionScreen(){
 
      floatingActionButton: FloatingActionButton(
       onPressed: (){
-        ValidateCurrentPage();
+        validateCurrentPage();
       },
       backgroundColor: Colors.white,
       child:const Icon(
@@ -261,10 +261,13 @@ Scaffold isQuestionScreen(){
             height: 30,
           ),
 
-          Image.network("https://png.pngtree.com/element_our/png/20181109/realistic-trophy-gold-cup-png_235093.jpg",
-          height: 500,
-          width: 500,)
-          ,
+          Image.network("https://img.freepik.com/premium-vector/winner-trophy-cup-with-ribbon-confetti_51486-122.jpg",
+          height: 300,
+          width: 300,),
+          const SizedBox(
+            height: 25,
+          ),
+          
           
           const Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -288,7 +291,7 @@ Scaffold isQuestionScreen(){
           ),
           const SizedBox(height: 15,),
           Text("$noOfCorrectAnswers/${allQuestions.length}",
-          style: TextStyle(fontSize: 20,
+          style: const TextStyle(fontSize: 20,
           fontWeight: FontWeight.w500),),
 
           ElevatedButton(
